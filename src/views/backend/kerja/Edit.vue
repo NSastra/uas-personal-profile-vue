@@ -42,7 +42,7 @@ import {useRoute} from 'vue-router'
 export default {
   setup() {
 
-    const kerja = reactive({
+    const resume = reactive({
       nama_krj: '',
       waktu: '',
       detail: '',
@@ -57,18 +57,18 @@ export default {
     onMounted(() =>{
       axios.get(`localhost:8000/api/kerja/${route.params.id}`)
       .then(response => {
-        kerja.nama_krj = response.data.data.nama_krj
-        kerja.waktu = response.data.data.waktu
-        kerja.detail = response.data.data.detail
+        resume.nama_krj = response.data.data.nama_krj
+        resume.waktu = response.data.data.waktu
+        resume.detail = response.data.data.detail
       }).catch(error =>{
         console.log(error)
       })
     })
 
     function update(){
-      let nama_krj = kerja.nama_krj
-      let waktu = kerja.waktu
-      let detail = kerja.detail
+      let nama_krj = resume.nama_krj
+      let waktu = resume.waktu
+      let detail = resume.detail
 
       axios.put(`localhost:8000/api/kerja/${route.params.id}`, {
         nama_krj: nama_krj,
@@ -84,7 +84,7 @@ export default {
     }
 
     return {
-      kerja,
+      resume,
       validation,
       router,
       update,

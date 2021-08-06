@@ -5,7 +5,7 @@
       <h5 class="card-title"> Tambah Data Pengalaman Kerja </h5>
   <div class="form-group">
     <label for="exampleInputEmail1">Nama Pekerjaan</label>
-    <input type="text" class="form-control" v-model="kerja.nama_krj">
+    <input type="text" class="form-control" v-model="resume.nama_krj">
   </div>
   <div class="alert alert-danger" v-if="validation.nama_krj">
     {{ validation.nama_krj=[0] }}
@@ -13,7 +13,7 @@
   
   <div class="form-group">
     <label for="exampleInputPassword1">Waktu Pelaksanaan</label>
-    <input type="text" class="form-control" v-model="kerja.waktu">
+    <input type="text" class="form-control" v-model="resume.waktu">
   </div>
   <div class="alert alert-danger" v-if="validation.waktu">
     {{ validation.waktu=[0] }}
@@ -21,7 +21,7 @@
 
   <div class="form-group">
     <label for="exampleInputPassword1">Detail</label>
-    <input type="text" class="form-control" v-model="kerja.detail">
+    <input type="text" class="form-control" v-model="resume.detail">
   </div>
   <div class="alert alert-danger" v-if="validation.detail">
     {{ validation.detail=[0] }}
@@ -41,7 +41,7 @@ import axios from 'axios'
 export default {
   setup() {
 
-    const kerja = reactive({
+    const resume = reactive({
       nama_krj: '',
       waktu: '',
       detail: '',
@@ -52,9 +52,9 @@ export default {
     const router = useRouter()
 
     function store(){
-      let nama_krj = kerja.nama_krj
-      let waktu = kerja.waktu
-      let detail = kerja.detail
+      let nama_krj = resume.nama_krj
+      let waktu = resume.waktu
+      let detail = resume.detail
 
       axios.post('localhost:8000/api/kerja', {
         nama_krj: nama_krj,
@@ -70,7 +70,7 @@ export default {
     }
 
     return {
-      kerja,
+      resume,
       validation,
       router,
       store
